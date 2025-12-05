@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bundle & Save Widget (Basic)</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="widget-container">
+        <header class="widget-header">
+            <div class="header-line"></div>
+            <h1 class="header-title">Bundle & Save</h1>
+            <div class="header-line"></div>
+        </header>
+
+        <div id="product-list" class="product-list">
+            <div id="card-1" class="product-card" data-price="195.00">
+                <div class="card-content" onclick="handleProductSelect(1, event)">
+                    <div class="radio-indicator"></div>
+                    <div class="info-block">
+                        <div class="pair-count">1 Pair</div>
+                        <div class="price-row">DKK 195.00<span class="old-price">DKK 273.00</span></div>
+                    </div>
+                    <div class="tags-block">
+                        <div class="tag-discount">40% OFF</div>
+                    </div>
+                </div>
+                
+                <div id="selectors-1" class="selectors-container" onclick="event.stopPropagation()">
+                    <div class="selector-labels">
+                        <div class="label-size">Size</div>
+                        <div class="label-color">Colour</div>
+                    </div>
+                    
+                    <div class="selector-row">
+                        <div class="row-index">#1</div>
+                        <select aria-label="Size for pair 1"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 1"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="card-2" class="product-card selected" data-price="345.00">
+                <div class="card-content" onclick="handleProductSelect(2, event)">
+                    <div class="radio-indicator"></div>
+                    <div class="info-block">
+                        <div class="pair-count">2 Pairs</div>
+                        <div class="price-row">DKK 345.00<span class="old-price">DKK 390.00</span></div>
+                    </div>
+                    <div class="tags-block">
+                        <div class="tag-popular">Most Popular</div>
+                        <div class="tag-discount">50% OFF</div>
+                    </div>
+                </div>
+                
+                <div id="selectors-2" class="selectors-container active" onclick="event.stopPropagation()">
+                    <div class="selector-labels">
+                        <div class="label-size">Size</div>
+                        <div class="label-color">Colour</div>
+                    </div>
+                    
+                    <div class="selector-row">
+                        <div class="row-index">#1</div>
+                        <select aria-label="Size for pair 1"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 1"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                    <div class="selector-row">
+                        <div class="row-index">#2</div>
+                        <select aria-label="Size for pair 2"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 2"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="card-3" class="product-card" data-price="528.00">
+                <div class="card-content" onclick="handleProductSelect(3, event)">
+                    <div class="radio-indicator"></div>
+                    <div class="info-block">
+                        <div class="pair-count">3 Pairs</div>
+                        <div class="price-row">DKK 528.00<span class="old-price">DKK 585.00</span></div>
+                    </div>
+                    <div class="tags-block">
+                        <div class="tag-discount">60% OFF</div>
+                    </div>
+                </div>
+                
+                <div id="selectors-3" class="selectors-container" onclick="event.stopPropagation()">
+                    <div class="selector-labels">
+                        <div class="label-size">Size</div>
+                        <div class="label-color">Colour</div>
+                    </div>
+                    
+                    <div class="selector-row">
+                        <div class="row-index">#1</div>
+                        <select aria-label="Size for pair 1"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 1"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                    <div class="selector-row">
+                        <div class="row-index">#2</div>
+                        <select aria-label="Size for pair 2"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 2"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                    <div class="selector-row">
+                        <div class="row-index">#3</div>
+                        <select aria-label="Size for pair 3"><option>S</option><option>M</option><option>L</option></select>
+                        <select aria-label="Color for pair 3"><option>Colour</option><option>Black</option><option>White</option><option>Blue</option></select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="widget-footer">
+            <div class="footer-summary">
+                <span class="shipping-label">Free 2 Day Shipping</span>
+                <span class="total-label">Total : <span id="total-price">DKK 345.00</span></span>
+            </div>
+            
+            <button class="btn-add-to-cart" onclick="showCartMessage()">
+                + Add to Cart
+            </button>
+            
+            <div class="branding">
+                &copy; Powered by Pumper
+            </div>
+        </footer>
+
+    </div>
+    
+    <div id="message-box" style="display:none; position:fixed; top:20px; right:20px; background-color:#333; color:white; padding:15px; border-radius:4px; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:100;">
+        Item added to cart!
+    </div>
+
+    <script src="action.js"></script>
+</body>
+</html>
